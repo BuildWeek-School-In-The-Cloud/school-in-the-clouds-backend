@@ -13,7 +13,6 @@ router.post("/tasks", async (req, res, next) => {
       } else if (!volunteer_id) {
         next("A valid volunteer_id is required");
       } else {
-        // task validated
         const task = {
           task_name: task_name,
           description: description,
@@ -24,7 +23,6 @@ router.post("/tasks", async (req, res, next) => {
   
         try {
           const newTask = await Tasks.addTask(task);
-          console.log("newTask", newTask);
           res.status(201).json(newTask);
         } catch (error) {
           res.status(500).json({ message: error.message });

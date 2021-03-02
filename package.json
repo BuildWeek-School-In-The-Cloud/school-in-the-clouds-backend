@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "build": "npm i && run start index.js",
     "server": "nodemon index.js",
     "migrateup": "knex migrate:up",
     "migratedown": "knex migrate:down",
     "migratelatest": "knex migrate:latest",
     "migraterollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,12 +33,16 @@
     "eslint": "^7.21.0",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
+    "heroku": "^7.49.1",
+    "index.js": "^0.0.3",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.18",
     "knex-cleaner": "^1.3.1",
+    "npm": "^7.6.0",
     "pg": "^8.5.1",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "start": "^5.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
