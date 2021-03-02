@@ -9,13 +9,13 @@ exports.seed = function (knex) {
             role: "admin"
           },
           {
-            username: "matt",
+            username: "Jacob",
             password: "1234",
             role: "student"
           
           },
           {
-            username: "bob",
+            username: "Tim",
             password: "1234",
             role: "volunteer"
           },

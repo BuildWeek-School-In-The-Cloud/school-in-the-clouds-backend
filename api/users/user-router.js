@@ -1,10 +1,12 @@
 const router = require("express").Router();
-
 const User = require("./user-model");
 const checkRole = require('../../api/middleware/check-role-mw')
 const restricted = require('../middleware/restricted')
 
-router.get("/", restricted, checkRole('admin'), (req, res) => {
+
+
+// GET REQUEST TO GET ALL REGISTERED USERS 
+router.get("/volunteers", restricted, checkRole('admin'), (req, res) => {
   User.getAll()
     .then((users) => {
       res.status(200).json(users);
@@ -14,7 +16,9 @@ router.get("/", restricted, checkRole('admin'), (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+
+// GET REGISTER USER BY ID
+router.get("/volunteers/:id", (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
       res.status(200).json(user);
@@ -24,7 +28,9 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+
+// EDIT USER BY ID
+router.put("/volunteers/:id", (req, res) => {
   User.edit(req.params.id, req.body)
     .then((editedUser) => {
       res.status(200).json(editedUser);
@@ -34,7 +40,9 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+
+// DELETE USER BY ID
+router.delete("/volunteers/:id", (req, res) => {
   const { id } = req.params;
   User.remove(id)
     .then(() => {
@@ -44,5 +52,7 @@ router.delete("/:id", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+
+
 
 module.exports = router;
