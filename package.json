@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "npm i && run start webpack index.js",
+    "build": "npm i && run start index.js",
     "server": "nodemon index.js",
     "migrateup": "knex migrate:up",
     "migratedown": "knex migrate:down",
