@@ -1,11 +1,14 @@
 {
   "name": "school-in-the-clouds-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.15.5"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "npm i && run start index.js",
+    "build": "npm i && run start webpack index.js",
     "server": "nodemon index.js",
     "migrateup": "knex migrate:up",
     "migratedown": "knex migrate:down",
