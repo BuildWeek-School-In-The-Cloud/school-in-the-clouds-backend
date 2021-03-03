@@ -14,6 +14,10 @@ Put the above in your .env file. Some adjustments in the connection URLs will be
 require('dotenv').config()
 const pg = require('pg')
 
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false }
+}
+
 const sharedConfig = {
   client:'pg' ,
   migrations: { directory: './data/migrations' },
@@ -32,8 +36,8 @@ module.exports = {
   },
   production: {
     ...sharedConfig,
-    connection: process.env.PROUCTION_DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
+    connection: process.env.DATABASE_URL,
+    // ssl: { rejectUnauthorized: false },
     pool: { min: 2, max: 10 }
   },
 }
