@@ -85,4 +85,3 @@ exports.up = function (knex) {
         .dropTableIfExists('admin')
         .dropTableIfExists('users')
   };
-  
