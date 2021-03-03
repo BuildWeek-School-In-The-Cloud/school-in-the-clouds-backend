@@ -22,4 +22,3 @@ exports.seed = function (knex) {
         ]);
       });
   };
-  
