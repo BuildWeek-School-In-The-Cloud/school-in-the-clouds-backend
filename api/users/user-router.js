@@ -6,7 +6,7 @@ const restricted = require('../middleware/restricted')
 
 
 // GET REQUEST TO GET ALL REGISTERED USERS 
-router.get("/volunteers", restricted, checkRole('admin'), (req, res) => {
+router.get("/volunteers", /*restricted, */ /*checkRole('admin'),*/ (req, res) => {
   User.getAll()
     .then((users) => {
       res.status(200).json(users);
