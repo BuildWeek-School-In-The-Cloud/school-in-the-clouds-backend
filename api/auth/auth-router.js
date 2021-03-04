@@ -29,14 +29,14 @@ router.post("/register", [checkPayload, checkUsernameUnique], (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const { username, password, role } = req.body;
+  const { username, password, role, id } = req.body;
 
   if (isValid(req.body)) {
     User.findBy({ username: username, role: role})
       .then(([user]) => {
         if (user && bcryptjs.compareSync(password, user.password) && role) {
           const token = generateToken(user);
-          res.status(200).json({ message: `Welcome, ${user.username}`, token });
+          res.status(200).json({ message: `{ 'username':'${user.username}', 'role':'${user.role}', 'id':${user.id} }`, token });
         } else {
           res.status(401).json({ error: "Invalid credentials" });
         }
