@@ -21,7 +21,7 @@ server.use(cors());
 server.use("/api/auth", authRouter);
 server.use('/api/volunteers', taskRouter)
 server.use('/api/admin', restricted, adminRouter)
-server.use("/api/student", restricted,  UserRouter);
+server.use("/api/student", restricted,  UserRouter); 
 
 
 server.get("/", (req, res) => {
