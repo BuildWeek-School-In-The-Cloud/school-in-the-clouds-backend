@@ -25,6 +25,18 @@ const findById = (id) => {
   return db("users").where({ id }).first();
 }
 
+const find = () => {
+  return db('volunteer as v')
+  .join('users as u', 'v.user_id', 'u.id')
+  .select(
+    'v.id as volunteer_id',
+    'u.id as user_id',
+    'u.username as username',
+    'v.availability',
+    'v.country'
+  )
+}
+
 module.exports = {
   add,
   edit,
@@ -32,4 +44,5 @@ module.exports = {
   getAll,
   findBy,
   findById,
+  find
 };
